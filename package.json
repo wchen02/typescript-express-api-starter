@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node build/server.js",
-    "start:dev": "nodemon",
+    "dev": "DEBUG=* nodemon",
     "build": "rimraf ./build && tsc",
     "release": "standard-version --no-verify"
   },
