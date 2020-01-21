@@ -2,16 +2,29 @@
   "name": "rw-api",
   "version": "1.0.0",
   "description": "RW API",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node build/index.js",
+    "start": "npm run build && node build/server.js",
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wchen02/rw-api.git"
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.2",
+    "@types/morgan": "^1.7.37",
+    "@types/node": "^13.1.8",
+    "nodemon": "^2.0.2",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
   },
   "keywords": [
     "TypeScript",
@@ -19,23 +32,14 @@
     "Express",
     "API"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wchen02/rw-api.git"
+  },
   "author": "Wensheng Chen <hi@wenshengchen.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wchen02/rw-api/issues"
   },
-  "homepage": "https://github.com/wchen02/rw-api#readme",
-  "devDependencies": {
-    "@types/node": "^13.1.8",
-    "nodemon": "^2.0.2",
-    "rimraf": "^3.0.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
-  },
-  "dependencies": {
-    "cookie-parser": "^1.4.4",
-    "debug": "^4.1.1",
-    "express": "^4.17.1",
-    "morgan": "^1.9.1"
-  }
+  "homepage": "https://github.com/wchen02/rw-api#readme"
 }
