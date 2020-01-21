@@ -1,0 +1,25 @@
+{
+  "name": "rw-api",
+  "version": "1.0.0",
+  "description": "RW API",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wchen02/rw-api.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "Node.js",
+    "Express",
+    "API"
+  ],
+  "author": "Wensheng Chen <hi@wenshengchen.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wchen02/rw-api/issues"
+  },
+  "homepage": "https://github.com/wchen02/rw-api#readme"
+}
