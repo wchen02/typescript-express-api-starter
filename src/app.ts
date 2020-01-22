@@ -1,11 +1,17 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import config from "config";
+import knex, * as Knex from "knex";
 
 import IndexRouter from "./router";
 
 class App {
   private app: express.Express;
+
+  private config?: config.IConfig;
+
+  private knex?: Knex;
 
   constructor(app: express.Express, port: number) {
     this.app = app;
@@ -13,8 +19,16 @@ class App {
   }
 
   init() {
+    this.config = config;
+    this.initDatabase();
     this.setupMiddlewares();
     this.setupRoutes();
+  }
+
+  private initDatabase() {
+    if (this.config) {
+      this.knex = knex(this.config.get<knex.Config>("db"));
+    }
   }
 
   private setupMiddlewares() {
