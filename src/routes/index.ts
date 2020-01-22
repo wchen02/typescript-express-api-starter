@@ -1,14 +1,25 @@
-import { Application } from 'express';
-import express, { Request, Response, NextFunction } from 'express';
+import express, { 
+  Application, 
+  Request, 
+  Response, 
+  NextFunction 
+} from 'express';
 
-const router = express.Router();
+class IndexRouter {
+  private router: express.Router;
+  constructor(router: express.Router) {
+    this.router = router;
+  }
 
-router.get('/', function(req: Request, res: Response, next: NextFunction) {
-  res.send("You've found the RW API Server!");
-});
+  init() {
+    this.router.get('/', function(req: Request, res: Response, next: NextFunction) {
+      res.send("You've found the RW API Server!");
+    });
+  }
 
-const useRoutes = (app: Application) => {
-  app.use('/', router);  
+  useBy(app: Application) {
+    app.use('/', this.router);
+  }
 }
 
-export { router, useRoutes };
+export default IndexRouter;

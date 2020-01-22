@@ -2,10 +2,10 @@
   "name": "rw-api",
   "version": "1.0.1",
   "description": "RW API",
-  "main": "src/server.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node build/server.js",
+    "start": "npm run build && node build/index.js",
     "dev": "DEBUG=* nodemon",
     "build": "rimraf ./build && tsc",
     "commit": "git-cz",
