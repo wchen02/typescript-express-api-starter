@@ -1,13 +1,16 @@
-import { Express } from 'express';
-import http from 'http';
-import debug from 'debug';
+import { Express } from "express";
+import http from "http";
+import debug from "debug";
 
-import App from './app';
+import App from "./app";
 
 class Server {
   private port: number;
+
   private app: Express;
+
   private debugger?: debug.Debugger;
+
   private server?: http.Server;
 
   constructor(app: Express, port: number) {
@@ -27,40 +30,46 @@ class Server {
   }
 
   private initDebugger() {
-    this.debugger = debug('src:server');
+    this.debugger = debug("src:server");
   }
 
   private initServer() {
     this.server = http.createServer(this.app);
     this.server.listen(this.port);
-    this.server.on('error', (error: NodeJS.ErrnoException) => {
-      if (error.syscall !== 'listen') {
+    this.server.on("error", (error: NodeJS.ErrnoException) => {
+      if (error.syscall !== "listen") {
         throw error;
       }
-    
-      const bind = typeof this.port === 'string'
-        ? 'Pipe ' + this.port
-        : 'Port ' + this.port;
-    
+
+      const bind = typeof this.port === "string"
+        ? `Pipe ${this.port}`
+        : `Port ${this.port}`;
+
       // handle specific listen errors with friendly messages
       switch (error.code) {
-        case 'EACCES':
-          console.error(bind + ' requires elevated privileges');
+        case "EACCES":
+          // eslint-disable-next-line no-console
+          console.error(`${bind} requires elevated privileges`);
           process.exit(1);
-        case 'EADDRINUSE':
-          console.error(bind + ' is already in use');
+          break;
+        case "EADDRINUSE":
+          // eslint-disable-next-line no-console
+          console.error(`${bind} is already in use`);
           process.exit(1);
+          break;
         default:
           throw error;
       }
     });
 
-    this.server.on('listening', () => {
+    this.server.on("listening", () => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const addr = this.server!.address();
-      const bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + (addr instanceof Object ? addr.port : '');
-      this.debugger!('Listening on ' + bind);
+      const bind = typeof addr === "string"
+        ? `pipe ${addr}`
+        : `port ${addr instanceof Object ? addr.port : ""}`;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.debugger!(`Listening on ${bind}`);
     });
   }
 
