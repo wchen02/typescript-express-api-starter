@@ -1,4 +1,4 @@
-class Utils {
+class Util {
   static normalizePort = (val: string) => {
     const port = parseInt(val, 10);
 
@@ -10,4 +10,4 @@ class Utils {
   };
 }
 
-export default Utils;
+export default Util;

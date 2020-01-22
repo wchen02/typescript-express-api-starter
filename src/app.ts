@@ -2,7 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 
-import IndexRouter from "./routes";
+import IndexRouter from "./router";
 
 class App {
   private app: express.Express;
